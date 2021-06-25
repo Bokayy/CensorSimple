@@ -12,35 +12,48 @@ using namespace std;
 //funkcija za detekciju i cenzuriranje zlih riječi
 string BadWordsFilter(string tocheck)
 {
-	istringstream iss(tocheck);
 	string NewMessage;
 	int howManyWords = 0; //counter which counts how many words (NOT letters (chars)) there are in a given string
 	string Illegal[5] = { "badword1", "badword2", "badword3", "badword4", "badword5" };
 
-	do{
-		string temp;
-		iss >> temp;
-		howManyWords++;
-	} while (iss);
-	howManyWords--;
+	//do{
+	//	string temp;
+	//	iss >> temp;
+	//	howManyWords++;
+	//} while (iss);
+	//howManyWords--;
 
 
 	istringstream iss2(tocheck);
 
-	for (int i = 0; i <= howManyWords; i++)
-	{
+	//do {
+
+	//	string substring;
+	//	iss2 >> substring;
+
+	//	if (substring == Illegal[0]) { substring = "******"; }
+	//	if (substring == Illegal[1]) { substring = "******"; }
+	//	if (substring == Illegal[2]) { substring = "******"; }
+	//	if (substring == Illegal[3]) { substring = "******"; }
+	//	if (substring == Illegal[4]) { substring = "******"; }
+
+	//	NewMessage.append(substring + " ");
+
+	//} while (iss2);
+
+	do {
+
 		string substring;
 		iss2 >> substring;
-		
-		if (substring == Illegal[0]) { substring = "******"; }
-		if (substring == Illegal[1]) { substring = "******"; }
-		if (substring == Illegal[2]) { substring = "******"; }
-		if (substring == Illegal[3]) { substring = "******"; }
-		if (substring == Illegal[4]) { substring = "******"; }
+
+		for (int i = 0; i <= 4; i++) {
+			if (substring == Illegal[i]) { substring = "******"; }
+		}
 
 		NewMessage.append(substring + " ");
 
-	}
+	} while (iss2);
+	
 	return NewMessage;
 }
 
@@ -61,6 +74,26 @@ int main()
 
 	return 0;
 }
+
+//istringstream iss(tocheck);
+
+//for (int i = 0; i <= howManyWords; i++)
+//{
+//	string substring;
+//	iss2 >> substring;
+//	
+//	if (substring == Illegal[0]) { substring = "******"; }
+//	if (substring == Illegal[1]) { substring = "******"; }
+//	if (substring == Illegal[2]) { substring = "******"; }
+//	if (substring == Illegal[3]) { substring = "******"; }
+//	if (substring == Illegal[4]) { substring = "******"; }
+
+//	NewMessage.append(substring + " ");
+
+//}
+//return NewMessage;
+
+
 
 
 //testing to see what iss spits out
